@@ -119,7 +119,66 @@
       </span>
     </p>
   </section>
+
+  <section class="contact">
+    <h2 class="contact__title">Pas envie d'appeler tout de suite&#8201;?</h2>
+    <p class="contact__subtitle">Laissez-nous vos coordonnées, on vous rappelle rapidement.</p>
+
+    <form id="contact-form" class="contact__form" action="https://formspree.io/f/mjybbekn" method="POST">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <input type="hidden" name="_subject" value="Nouvelle demande — Allo Geek">
+
+      <label class="contact__field">
+        <span>Nom</span>
+        <input type="text" name="Nom" required autocomplete="name">
+      </label>
+
+      <label class="contact__field">
+        <span>Téléphone</span>
+        <input type="tel" name="Téléphone" required autocomplete="tel">
+      </label>
+
+      <label class="contact__field">
+        <span>Votre problème</span>
+        <textarea name="Message" rows="4" required></textarea>
+      </label>
+
+      <button type="submit" class="contact__submit">Envoyer</button>
+      <p id="form-status" class="contact__status" role="status"></p>
+    </form>
+  </section>
 </main>
+
+<script>
+  const contactForm = document.getElementById('contact-form');
+  const formStatus = document.getElementById('form-status');
+
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    formStatus.textContent = '';
+    formStatus.className = 'contact__status';
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        formStatus.textContent = 'Merci ! On vous recontacte au plus vite.';
+        formStatus.classList.add('contact__status--ok');
+      } else {
+        formStatus.textContent = "Oups, l'envoi a échoué. Appelez-nous directement au +33 7 49 25 89 72.";
+        formStatus.classList.add('contact__status--error');
+      }
+    } catch {
+      formStatus.textContent = "Oups, l'envoi a échoué. Appelez-nous directement au +33 7 49 25 89 72.";
+      formStatus.classList.add('contact__status--error');
+    }
+  });
+</script>
 
 </body>
 </html>
