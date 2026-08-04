@@ -2,9 +2,10 @@
   --green-dark: #0C5E2F;
   --green-deep: #0A6B2C;
   --green: #2E9E5F;
+  --green-mid: #1D7E47;
   --green-pale: #EDF6EE;
   --green-border: #D4E9D9;
-  --red: #D8341F;
+  --red: #9B2423;
   --text-body: #4B4F55;
   --text-gray: #6B7280;
   --text-dark: #24262A;
@@ -120,7 +121,7 @@ img {
   font-weight: 700;
   font-size: 0.938rem;
   letter-spacing: 1px;
-  color: #1D7E47;
+  color: var(--green-mid);
 }
 
 .card__desc {
@@ -272,7 +273,7 @@ img {
   font-weight: 700;
   font-size: 0.688rem;
   letter-spacing: 1px;
-  color: var(--green);
+  color: var(--green-dark);
   text-transform: uppercase;
 }
 
@@ -301,7 +302,7 @@ img {
   font-size: 1rem;
   letter-spacing: 0.5px;
   color: #FFFFFF;
-  background: var(--green);
+  background: var(--green-mid);
   border: none;
   border-radius: 10px;
   padding: 13px;
@@ -309,7 +310,7 @@ img {
 }
 
 .contact__submit:hover {
-  background: var(--green-deep);
+  background: var(--green-dark);
 }
 
 .contact__status {
